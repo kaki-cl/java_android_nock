@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">java_android_nock</string>
+    <string name="image_button">Image Button</string>
+    <string name="button">Button</string>
+    <string name="tapped">Tapped</string>
+    <string name="image_description">HONDA TSUBASA</string>
 </resources>

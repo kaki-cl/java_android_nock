@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.example.kakehi.java_android_nock.MainActivity">
+    android:background="#cfe"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_view"
-        android:textSize="50sp"
-        android:textColor="#ff00ff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_margin="40dp"
+        android:id="@+id/text_imagebutton"
+        android:layout_marginTop="40dp"
+        android:textColor="#ff0000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:text="Button"/>
+        android:gravity="center"
+        android:text="@string/image_button"/>
+
+    <ImageButton
+        android:id="@+id/image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#888"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/honda_iloveimg_resized"/>
+
+    <TextView
+        android:id="@+id/text_button"
+        android:textSize="30sp"
+        android:textColor="#ff0000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/honda_iloveimg_resized"/>
 
 </LinearLayout>
