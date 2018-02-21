@@ -1,23 +1,5 @@
 <resources>
-    <string name="app_name">TestInflater</string>
+    <string name="app_name">TestArrayAdapter</string>
+    <string name="decade">Globe Decade</string>
     <string name="button">Button</string>
-    <string name="description">Yuka</string>
-    <string name="text">Birthday Events!</string>
-    <string name="contents">
-            "日付：\n"
-            "20XX年05月22日\n"
-            "会場：\n"
-            "東京都新宿区山吹町 Bスタジオ\n\n"
-            "第1部：10時00分～11時00分\n"
-            "（手作りケーキ？お菓子を食べよう！）\n"
-            "第2部：11時15分～12時15分\n"
-            "（ゆかちぃとゲーム！＜頭脳編＞）\n"
-            "握手会\n"
-            "12時30分～13時00分\n"
-            "（握手会：その１）\n"
-            "第3部："
-            "14時00分～15時00分\n"
-            "（ゆかちぃとゲーム！＜アクティブ編＞）\n"
-            "第4部："
-            "15時15分～16時15分"</string>
 </resources>
