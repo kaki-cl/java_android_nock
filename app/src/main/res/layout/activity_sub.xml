@@ -5,19 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#dfe"
+    android:background="#fdd"
     tools:context=".MainActivity">
 
     <TextView
-        android:text="@string/main"
+        android:text="@string/sub"
         android:textSize="30sp"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/send_button"
-        android:text="@string/move"
+        android:id="@+id/return_button"
+        android:text="@string/return_sub"
         android:textSize="30sp"
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
