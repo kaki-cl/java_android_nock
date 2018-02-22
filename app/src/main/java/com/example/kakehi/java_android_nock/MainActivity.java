@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //戻るページが有る場合
+        //event.getAction() == KeyEvent.ACTION_DOWN キーが押されたイベントが発生したことを示す
+        //keyCode == KeyEvent.KEYCODE_BACK 押されたキーがBack Keyであることを示す
         if (event.getAction() == KeyEvent.ACTION_DOWN
                 && keyCode == KeyEvent.KEYCODE_BACK) {
             if (webView.canGoBack()) {
@@ -64,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         }
-        // todo わからない
-        return super.onKeyDown(keyCode, event);
+        return false;
     }
 }
