@@ -1,86 +1,70 @@
 package com.example.kakehi.java_android_nock;
 
-import android.graphics.Color;
-import android.os.Bundle;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Created by kakehi on 2018/02/19.
  */
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private boolean flag = false;
-    private Button button;
-    private LinearLayout.LayoutParams buttonLayoutParams;
-    private float scale;
-    private int buttonWidth;
-    private int margins;
+    private WebView webView;
+    private String accessUrl = "https://akira-watson.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        //リニアレイアウトの設定
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
-        // レイアウト中央寄せ
-        layout.setGravity(Gravity.CENTER);
-        setContentView(layout);
-        // レイアウトファイルは呼ばない
-//        setContentView(R.layout.activity_main);
+        Button button1 = findViewById(R.id.button_1);
+        Button button2 = findViewById(R.id.button_2);
 
-        // テキスト設定
-        textView = new TextView(this);
-        textView.setText("Hello");
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
-        textView.setTextColor(Color.rgb(0x0, 0x0, 0x0));
-
-        LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        textView.setLayoutParams(textLayoutParams);
-        layout.addView(textView);
-
-        // ボタンの設定
-        Button button = new Button(this);
-        button.setText("Button");
-        float scale = getResources().getDisplayMetrics().density;
-        int buttonWidth = (int) (150 * scale);
-        LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(
-                buttonWidth,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        int margins = (int) (20 * scale);
-        buttonLayoutParams.setMargins(margins, margins, margins, margins);
-
-        button.setLayoutParams(buttonLayoutParams);
-        layout.addView(button);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        //WebView
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (flag) {
-                    textView.setText("Hello");
-                    flag = false;
-                } else {
-                    textView.setText("World");
-                    flag = true;
-                }
+                setContentView(R.layout.web);
+                webView = findViewById(R.id.web_view);
+                webView.getSettings().setJavaScriptEnabled(true);
+                webView.getSettings().setDomStorageEnabled(true);
+                getWindow().setFlags(
+                        WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                        WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+                );
+                webView.loadUrl(accessUrl);
             }
         });
 
-
+        // Browser
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse(accessUrl);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
     }
 
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //戻るページが有る場合
+        if (event.getAction() == KeyEvent.ACTION_DOWN
+                && keyCode == KeyEvent.KEYCODE_BACK) {
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        // todo わからない
+        return super.onKeyDown(keyCode, event);
+    }
 }

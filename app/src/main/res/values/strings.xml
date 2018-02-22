@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">java_android_nock</string>
+    <string name="app_name">TestWebView</string>
+    <string name="button1">WebView</string>
+    <string name="button2">Browser</string>
 </resources>
