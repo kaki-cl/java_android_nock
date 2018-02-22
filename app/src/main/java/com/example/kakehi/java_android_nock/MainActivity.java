@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @link https://developer.android.com/reference/android/view/KeyEvent.html#ACTION_DOWN
+     * @param keyCode
+     * @param event
+     */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //event.getAction() == KeyEvent.ACTION_DOWN キーが押されたイベントが発生したことを示す
         //keyCode == KeyEvent.KEYCODE_BACK 押されたキーがBack Keyであることを示す
