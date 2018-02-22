@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
         HeavyTask heavyTask = new HeavyTask();
 
-        // listenerをセット
+        // listenerを上で定義したheavyTaskオブジェクトにセット
         heavyTask.setListener(createTestListener());
-        // タスクを開始
+        // 上でlisterをセットされたheavyTaskオブジェクトでタスクを開始
         heavyTask.taskStart();
     }
 
