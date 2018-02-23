@@ -1,15 +1,20 @@
 package com.example.kakehi.java_android_nock;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SampleAsyncTask sampleAsyncTask;
+    private UploadTask task;
     private TextView textView;
+    private EditText editText;
+    String url = "http://10.0.2.2:8000/pass_check.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,37 +23,45 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.text_view);
 
-        Button buttonStart = findViewById(R.id.button_start);
-        buttonStart.setOnClickListener(new View.OnClickListener() {
+        editText = findViewById(R.id.uriname);
+        Button post = findViewById(R.id.post);
+
+        // ボタンを押して非同期処理を開始
+        post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ボタンをタップして非同期処理を開始
-                sampleAsyncTask = new SampleAsyncTask();
-                // Listenerを設定
-                sampleAsyncTask.setListener(createListener());
-                sampleAsyncTask.execute(0);
+                String param0 = editText.getText().toString();
+                if (param0.length() != 0) {
+                    task = new UploadTask();
+                    task.setListener(createListener());
+                    task.execute(param0);
+                }
             }
         });
 
-        // 数えた数字をリセットするボタン
-        Button buttonClear = findViewById(R.id.button_clear);
-        buttonClear.setOnClickListener(new View.OnClickListener() {
+        Button browser = findViewById(R.id.browser);
+        browser.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
-                textView.setText(String.valueOf(0));
+                Uri uri = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+                textView.setText("");
             }
         });
     }
 
     @Override
     protected void onDestroy() {
-        sampleAsyncTask.setListener(null);
+        task.setListener(null);
         super.onDestroy();
     }
 
-    private SampleAsyncTask.Listener createListener() {
-        return new SampleAsyncTask.Listener() {
+    private UploadTask.UploadListener createListener() {
+        return new UploadTask.UploadListener() {
             @Override
-            public void onSuccess(int count) {
+            public void onSuccess(String count) {
                 textView.setText(String.valueOf(count));
             }
         };

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">TestAsyncTask</string>
-    <string name="zero">0</string>
-    <string name="start">Start</string>
-    <string name="clear">Clear</string>
+    <string name="app_name">TestHttpURLConnectionPOST</string>
+    <string name="word">Word=</string>
+    <string name="hint">any words</string>
+    <string name="post">post data</string>
+    <string name="browser">browser</string>
 </resources>
